@@ -7,8 +7,8 @@ from flask_restful import Api
 from mongoengine import connect
 # You need to implement two resources: Brevet and Brevets.
 # Uncomment when done:
-from resources.brevet import Brevet
-from resources.brevets import Brevets
+from resources.brevet import Brevet_R
+from resources.brevets import Brevets_R
 
 # Connect MongoEngine to mongodb
 connect(host=f"mongodb://{os.environ['MONGODB_HOSTNAME']}:27017/brevetsdb")
@@ -20,8 +20,8 @@ port_num = True if "PORT" not in os.environ else os.environ["PORT"]
 api = Api(app)
 
 # Bind resources to paths here:
-api.add_resource(Brevet, "/api/brevet/<id>")
-api.add_resource(Brevets, "/api/brevets")
+api.add_resource(Brevet_R, "/api/brevet/<id>")
+api.add_resource(Brevets_R, "/api/brevets")
 
 if __name__ == "__main__":
     # Run flask app normally
